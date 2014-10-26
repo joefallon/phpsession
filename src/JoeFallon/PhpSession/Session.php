@@ -1,5 +1,5 @@
 <?php
-namespace JoeFallon\Session;
+namespace JoeFallon\PhpSession;
 
 use InvalidArgumentException;
 

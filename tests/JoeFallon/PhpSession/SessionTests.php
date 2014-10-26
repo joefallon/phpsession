@@ -1,9 +1,9 @@
 <?php
-namespace tests\JoeFallon\Session;
+namespace tests\JoeFallon\PhpSession;
 
 use Exception;
 use JoeFallon\KissTest\UnitTest;
-use JoeFallon\Session\Session;
+use JoeFallon\PhpSession\Session;
 
 /**
  * @author    Joseph Fallon <joseph.t.fallon@gmail.com>
