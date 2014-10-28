@@ -18,9 +18,9 @@ class SessionTests extends UnitTest
         {
             $session = new Session(-1, 1800);
         }
-        catch(Exception $e)
+        catch(Exception $ex)
         {
-            $e = null;
+            $ex = null;
             $this->testPass();
 
             return;

@@ -1,9 +1,9 @@
 {
     "name": "joefallon/phpsession",
     "type": "library",
-    "description": "This package contains a set of classes for making it easier to work with time in PHP.",
-    "keywords": [ "PHP", "time", "data", "chronograph" ],
-    "homepage": "https://github.com/joefallon/phptime",
+    "description": "phpsession",
+    "keywords": [ "PHP" ],
+    "homepage": "https://github.com/joefallon/phpsession",
     "license": "MIT",
     "authors": [
         {
