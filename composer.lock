@@ -4,21 +4,21 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c4bd5268ce84133ad836a4e56a148139",
+    "hash": "8a9aca9d9379c32536f8320ad68e7236",
     "packages": [],
     "packages-dev": [
         {
             "name": "joefallon/kisstest",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joefallon/kisstest.git",
-                "reference": "14c99dfe9fe10e44406cba000f4c7b6066d13014"
+                "reference": "278bcc35d86bdc1ad6653e756c28dd5abc3e6899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joefallon/kisstest/zipball/14c99dfe9fe10e44406cba000f4c7b6066d13014",
-                "reference": "14c99dfe9fe10e44406cba000f4c7b6066d13014",
+                "url": "https://api.github.com/repos/joefallon/kisstest/zipball/278bcc35d86bdc1ad6653e756c28dd5abc3e6899",
+                "reference": "278bcc35d86bdc1ad6653e756c28dd5abc3e6899",
                 "shasum": ""
             },
             "require": {
@@ -51,7 +51,7 @@
                 "unit-test",
                 "xunit"
             ],
-            "time": "2014-10-22 20:47:37"
+            "time": "2014-12-09 17:46:15"
         },
         {
             "name": "joefallon/phpautoloader",
