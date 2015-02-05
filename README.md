@@ -7,7 +7,7 @@ This library has the following features:
 *   Fully unit tested.
 *   Does not keep the session open between reads and writes. This allows AJAX requests
     to not be [blocked](http://konrness.com/php5/how-to-prevent-blocking-php-requests/).
-*   Simple to use. Can be fuller understood in a matter of minutes.
+*   Simple to use. Can be fully understood in a matter of minutes.
 *   Allows a maximum age to be used for session invalidation.
 *   Allows a maximum inactivity time to be used for session invalidation.
 
