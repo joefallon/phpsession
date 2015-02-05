@@ -9,16 +9,16 @@
     "packages-dev": [
         {
             "name": "joefallon/kisstest",
-            "version": "v1.1.8",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joefallon/kisstest.git",
-                "reference": "278bcc35d86bdc1ad6653e756c28dd5abc3e6899"
+                "reference": "8d34cb759cff19032fd95d878e5173ec016fc93a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joefallon/kisstest/zipball/278bcc35d86bdc1ad6653e756c28dd5abc3e6899",
-                "reference": "278bcc35d86bdc1ad6653e756c28dd5abc3e6899",
+                "url": "https://api.github.com/repos/joefallon/kisstest/zipball/8d34cb759cff19032fd95d878e5173ec016fc93a",
+                "reference": "8d34cb759cff19032fd95d878e5173ec016fc93a",
                 "shasum": ""
             },
             "require": {
@@ -51,20 +51,20 @@
                 "unit-test",
                 "xunit"
             ],
-            "time": "2014-12-09 17:46:15"
+            "time": "2015-01-26 20:40:15"
         },
         {
             "name": "joefallon/phpautoloader",
-            "version": "v2.0.1",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joefallon/phpautoloader.git",
-                "reference": "bae8db9f3327d44f8231f6ac414d00f9511f1dc4"
+                "reference": "3dd432e44d6d709b86a9ed60e3aa09375b1d49af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joefallon/phpautoloader/zipball/bae8db9f3327d44f8231f6ac414d00f9511f1dc4",
-                "reference": "bae8db9f3327d44f8231f6ac414d00f9511f1dc4",
+                "url": "https://api.github.com/repos/joefallon/phpautoloader/zipball/3dd432e44d6d709b86a9ed60e3aa09375b1d49af",
+                "reference": "3dd432e44d6d709b86a9ed60e3aa09375b1d49af",
                 "shasum": ""
             },
             "type": "library",
@@ -93,13 +93,14 @@
                 "namespace",
                 "psr-0"
             ],
-            "time": "2014-10-20 14:58:35"
+            "time": "2015-02-05 19:08:04"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": {
         "php": ">=5.3.0"
     },
