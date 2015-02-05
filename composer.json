@@ -1,7 +1,7 @@
 {
     "name": "joefallon/phpsession",
     "type": "library",
-    "description": "phpsession",
+    "description": "A simple age and activity based session library.",
     "keywords": [ "PHP" ],
     "homepage": "https://github.com/joefallon/phpsession",
     "license": "MIT",
