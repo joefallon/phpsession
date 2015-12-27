@@ -3,35 +3,35 @@ namespace JoeFallon\PhpSession;
 
 use InvalidArgumentException;
 
-/**
- * @author    Joseph Fallon <joseph.t.fallon@gmail.com>
- * @copyright Copyright 2014 Joseph Fallon (All rights reserved)
- * @license   MIT
- */
 class Session
 {
+    const HOUR = 3600;
+    const DAY  = 86400;
+    const WEEK = 604800;
+
     /** @var int */
     private $_maxAgeInSecs;
     /** @var int */
     private $_lastActivityTimeoutInSecs;
 
-
     /**
-     * The value of $maxAgeInSecs must be greater than or equal to
-     * $lastActivityTimeoutInSecs. To disable maximum session
-     * age checks, set the $maxAgeInSecs value to zero. To disable the
-     * checks on last activity timeout, set the value of
-     * $lastActivityTimeoutInSecs to zero.
-     *
-     * @param int $maxAgeInSecs
-     * @param int $lastActivityTimeoutInSecs
+     * @param int $maxAgeInSecs       All session entries expire in $maxAgeInSecs regardless of
+     *                                whether or not the session has been read/written. To
+     *                                prevent the session from expiring when the $maxAgeInSecs has
+     *                                passed, set $maxAgeInSecs to zero (0). The value of
+     *                                $maxAgeInSecs must be greater than or equal to
+     *                                $lastActivityInSecs.
+     * @param int $lastActivityInSecs Session entries expire when the time between session accesses
+     *                                exceeds $lastActivityInSecs. To prevent the session from
+     *                                expiring when $lastActivityInSecs has passed, set it to
+     *                                zero (0).
      *
      * @throws InvalidArgumentException
      */
-    public function __construct($maxAgeInSecs = 1800, $lastActivityTimeoutInSecs = 1800)
+    public function __construct($maxAgeInSecs = self::HOUR, $lastActivityInSecs = self::HOUR)
     {
-        $maxAgeInSecs              = intval($maxAgeInSecs);
-        $lastActivityTimeoutInSecs = intval($lastActivityTimeoutInSecs);
+        $maxAgeInSecs       = intval($maxAgeInSecs);
+        $lastActivityInSecs = intval($lastActivityInSecs);
 
         if($maxAgeInSecs < 0)
         {
@@ -39,29 +39,29 @@ class Session
             throw new InvalidArgumentException($msg);
         }
 
-        if($lastActivityTimeoutInSecs < 0)
+        if($lastActivityInSecs < 0)
         {
             $msg = 'The session last activity timeout is less than zero.';
             throw new InvalidArgumentException($msg);
         }
 
-        if($maxAgeInSecs < $lastActivityTimeoutInSecs)
+        if($maxAgeInSecs < $lastActivityInSecs)
         {
             $msg = 'The session max age must be longer than last activity timeout.';
             throw new InvalidArgumentException($msg);
         }
 
         $this->_maxAgeInSecs              = $maxAgeInSecs;
-        $this->_lastActivityTimeoutInSecs = $lastActivityTimeoutInSecs;
+        $this->_lastActivityTimeoutInSecs = $lastActivityInSecs;
     }
 
 
     /**
-     * read - This function retrieves the value associated with the key.
+     * Retrieve the session value associated with the key.
      *
-     * @param string $key
+     * @param string $key Session key.
      *
-     * @return null
+     * @return mixed
      */
     public function read($key)
     {
@@ -85,9 +85,20 @@ class Session
         return $val;
     }
 
+    private function openSession()
+    {
+        session_start();
+        session_regenerate_id();
+        $_SESSION['session_last_activity_time'] = time();
+    }
+
+    private function closeSession()
+    {
+        session_write_close();
+    }
 
     /**
-     * write - This function writes a session value to the session.
+     * Writes a session value to the session.
      *
      * @param string $key Key to store the session value in.
      * @param string $val Value to be stored.
@@ -109,11 +120,10 @@ class Session
         $this->closeSession();
     }
 
-
     /**
-     * unsetSessionValue - This function unsets a session variable.
+     * Unset the specified session variable.
      *
-     * @param string $key
+     * @param string $key Session key.
      */
     public function unsetSessionValue($key)
     {
@@ -124,15 +134,11 @@ class Session
         $this->closeSession();
     }
 
-
     /**
-     * maxAgeExpired
-     *
-     * @return boolean This function returns true if the time limit between now
-     *                 and the time that the session was started has been
-     *                 exceeded.
+     * @return boolean Returns true if the time limit between now and the time that the session was
+     *                 started has been exceeded.
      */
-    public function maxAgeTimeoutExpired()
+    public function isMaxAgeTimeoutExpired()
     {
         if($this->_maxAgeInSecs == 0)
         {
@@ -166,17 +172,13 @@ class Session
 
             return false;
         }
-
     }
 
-
     /**
-     * lastActivityTimeoutExpired
-     *
-     * @return boolean This function returns true if the time limit between now
-     *                 and the last activity has been exceeded.
+     * @return boolean Returns true if the time limit between now and the last activity has been
+     *                 exceeded.
      */
-    public function lastActivityTimeoutExpired()
+    public function isLastActivityTimeoutExpired()
     {
         if($this->_lastActivityTimeoutInSecs == 0)
         {
@@ -198,24 +200,20 @@ class Session
             $lastActivity = intval($_SESSION['session_last_activity_time']);
             $max          = $this->_lastActivityTimeoutInSecs;
             $diff         = $now - $lastActivity;
+            $this->closeSession();
 
             if($diff >= $max)
             {
-                $this->closeSession();
-
                 return true;
             }
-
-            $this->closeSession();
 
             return false;
         }
 
     }
 
-
     /**
-     * destroy - This function is used to completely eliminate a session.
+     * Completely eliminate all session data.
      */
     public function destroy()
     {
@@ -235,28 +233,8 @@ class Session
         }
 
         session_unset();
-        session_destroy();
         session_regenerate_id(true);
-        session_write_close();
-    }
-
-
-    /**
-     * openSession
-     */
-    private function openSession()
-    {
-        session_start();
-        session_regenerate_id();
-        $_SESSION['session_last_activity_time'] = time();
-    }
-
-
-    /**
-     * closeSession
-     */
-    private function closeSession()
-    {
+        session_destroy();
         session_write_close();
     }
 }

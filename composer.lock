@@ -1,31 +1,32 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8a9aca9d9379c32536f8320ad68e7236",
+    "hash": "3257d52b7d6299a3f517af5369663141",
+    "content-hash": "347d19cc9f11cb55e25726ad41b4ad07",
     "packages": [],
     "packages-dev": [
         {
             "name": "joefallon/kisstest",
-            "version": "v1.2.3",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joefallon/kisstest.git",
-                "reference": "8d34cb759cff19032fd95d878e5173ec016fc93a"
+                "reference": "ef60257e1965129b56bdd57bd0d05f6a4afe67ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joefallon/kisstest/zipball/8d34cb759cff19032fd95d878e5173ec016fc93a",
-                "reference": "8d34cb759cff19032fd95d878e5173ec016fc93a",
+                "url": "https://api.github.com/repos/joefallon/kisstest/zipball/ef60257e1965129b56bdd57bd0d05f6a4afe67ac",
+                "reference": "ef60257e1965129b56bdd57bd0d05f6a4afe67ac",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "joefallon/phpautoloader": "~2.0"
+                "joefallon/phpautoloader": "^2.0.0"
             },
             "type": "library",
             "autoload": {
@@ -44,27 +45,27 @@
                     "homepage": "http://blog.joefallon.net"
                 }
             ],
-            "description": "KissTest is a gorgeous and fast unit testing framework for PHP that does not require use of the command line.",
+            "description": "KissTest is command-line free, fast, simple and beautiful unit test framework.",
             "homepage": "https://github.com/joefallon/kisstest",
             "keywords": [
                 "test",
                 "unit-test",
                 "xunit"
             ],
-            "time": "2015-01-26 20:40:15"
+            "time": "2015-12-27 17:27:07"
         },
         {
             "name": "joefallon/phpautoloader",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/joefallon/phpautoloader.git",
-                "reference": "3dd432e44d6d709b86a9ed60e3aa09375b1d49af"
+                "reference": "940cc57d3219d210e0135355bf329d39a26f30fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/joefallon/phpautoloader/zipball/3dd432e44d6d709b86a9ed60e3aa09375b1d49af",
-                "reference": "3dd432e44d6d709b86a9ed60e3aa09375b1d49af",
+                "url": "https://api.github.com/repos/joefallon/phpautoloader/zipball/940cc57d3219d210e0135355bf329d39a26f30fd",
+                "reference": "940cc57d3219d210e0135355bf329d39a26f30fd",
                 "shasum": ""
             },
             "type": "library",
@@ -93,7 +94,7 @@
                 "namespace",
                 "psr-0"
             ],
-            "time": "2015-02-05 19:08:04"
+            "time": "2015-12-27 17:23:01"
         }
     ],
     "aliases": [],

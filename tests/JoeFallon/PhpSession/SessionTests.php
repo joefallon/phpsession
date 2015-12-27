@@ -16,7 +16,7 @@ class SessionTests extends UnitTest
     {
         try
         {
-            $session = new Session(-1, 1800);
+            $session = new Session(-1, Session::HOUR);
         }
         catch(Exception $ex)
         {
@@ -35,7 +35,7 @@ class SessionTests extends UnitTest
     {
         try
         {
-            $session = new Session(1800, -1);
+            $session = new Session(Session::HOUR, -1);
         }
         catch(Exception $e)
         {
@@ -54,7 +54,7 @@ class SessionTests extends UnitTest
     {
         try
         {
-            $session = new Session(1800, 1801);
+            $session = new Session(Session::HOUR, Session::HOUR + 1);
         }
         catch(Exception $e)
         {
@@ -91,47 +91,30 @@ class SessionTests extends UnitTest
 
     public function test_read_returns_null_if_key_empty()
     {
-        $session  = new Session();
-        $actual   = $session->read(null);
-        $expected = null;
-
-        $this->assertEqual($actual, $expected);
+        $session = new Session();
+        $this->assertEqual($session->read(null), null);
 
         $session->destroy();
     }
 
     public function test_read_write()
     {
-        $foo     = 'bar';
         $session = new Session();
+        $this->assertEqual($session->read('bar'), null);
 
-        $expected = null;
-        $actual   = $session->read($foo);
-
-        $this->assertEqual($actual, $expected);
-
-        $expected = 'random value';
-        $session->write($foo, $expected);
-        $actual = $session->read($foo);
-
-        $this->assertEqual($actual, $expected);
+        $session->write('bar', 'random value');
+        $this->assertEqual($session->read('bar'), 'random value');
 
         $session->destroy();
     }
 
     public function test_unset()
     {
-        $foo     = 'bar';
         $session = new Session();
-
-        $session->write($foo, 'random value');
-        $session->unsetSessionValue($foo);
-
-        $expected = null;
-        $actual   = $session->read($foo);
-
-        $this->assertEqual($actual, $expected);
-
+        $session->write('bar', 'random value');
+        $session->unsetSessionValue('bar');
+        $this->assertEqual($session->read('bar'), null);
+        
         $session->destroy();
     }
 }
