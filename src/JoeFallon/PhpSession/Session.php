@@ -87,7 +87,13 @@ class Session
 
     private function openSession()
     {
-        session_start();
+        $sessionStatus = session_status();
+
+        if($sessionStatus == PHP_SESSION_NONE)
+        {
+            session_start();
+        }
+
         session_regenerate_id();
         $_SESSION['session_last_activity_time'] = time();
     }
